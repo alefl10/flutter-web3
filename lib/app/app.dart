@@ -5,4 +5,48 @@
 // license that can be found in the LICENSE file or at
 // https://opensource.org/licenses/MIT.
 
-export 'view/app.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:hello_web3/hello/hello.dart';
+import 'package:hello_web3/l10n/l10n.dart';
+import 'package:web_three_repository/web_three_repository.dart';
+
+class App extends StatelessWidget {
+  const App({
+    required WebThreeRepository webThreeRepository,
+    super.key,
+  }) : _webThreeRepository = webThreeRepository;
+
+  final WebThreeRepository _webThreeRepository;
+
+  @override
+  Widget build(BuildContext context) {
+    return MultiRepositoryProvider(
+      providers: [RepositoryProvider.value(value: _webThreeRepository)],
+      child: const AppView(),
+    );
+  }
+}
+
+class AppView extends StatelessWidget {
+  const AppView({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      theme: ThemeData(
+        appBarTheme: const AppBarTheme(color: Color(0xFF13B9FF)),
+        colorScheme: ColorScheme.fromSwatch(
+          accentColor: const Color(0xFF13B9FF),
+        ),
+      ),
+      localizationsDelegates: const [
+        AppLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate,
+      ],
+      supportedLocales: AppLocalizations.supportedLocales,
+      home: const HelloPage(),
+    );
+  }
+}

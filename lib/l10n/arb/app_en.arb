@@ -1,7 +1,27 @@
 {
     "@@locale": "en",
-    "counterAppBarTitle": "Counter",
-    "@counterAppBarTitle": {
-        "description": "Text shown in the AppBar of the Counter Page"
+    "appTitle": "Flutter Web 3.0",
+    "@appTitle": {
+        "description": "Text shown in the AppBar of the Hello Page"
+    },
+    "errorMessage": "There was an error.",
+    "@errorMessage": {
+        "description": "Text shown when there is an error in the App"
+    },
+    "helloWord": "Hello",
+    "@helloWord": {
+        "description": "Hello word"
+    },
+    "setNameLabel": "Set Name",
+    "@setNameLabel": {
+        "description": "Label text shown on the set name button"
+    },
+    "transactionWord": "Transaction",
+    "@transactionWord": {
+        "description": "Transaction word"
+    },
+    "tryAgainLabel": "Try again",
+    "@tryAgainLabel": {
+        "description": "Label text shown on the try again button"
     }
 }

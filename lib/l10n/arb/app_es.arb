@@ -1,7 +1,27 @@
 {
     "@@locale": "es",
-    "counterAppBarTitle": "Contador",
-    "@counterAppBarTitle": {
-        "description": "Texto mostrado en la AppBar de la página del contador"
+    "appTitle": "Flutter Web 3.0",
+    "@appTitle": {
+        "description": "Texto mostrado en la AppBar de Hello Page"
+    },
+    "errorMessage": "Ha habido un error.",
+    "@errorMessage": {
+        "description": "Texo mostrado cuando hay un error en la App"
+    },
+    "helloWord": "Hola",
+    "@helloWord": {
+        "description": "La palabra Hola"
+    },
+    "setNameLabel": "Configura el nombre",
+    "@setNameLabel": {
+        "description": "Etiqueta de texto mostrada en el botón para configurar el nombre"
+    },
+    "transactionWord": "Transacción",
+    "@transactionWord": {
+        "description": "La palabra transacción"
+    },
+    "tryAgainLabel": "Inténtalo de nuevo",
+    "@tryAgainLabel": {
+        "description": "Etiqueta de texto mostrada en el botón para intentarlo de nuevo"
     }
 }
