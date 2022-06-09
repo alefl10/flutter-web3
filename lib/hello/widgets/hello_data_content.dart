@@ -8,7 +8,7 @@ class HelloDataContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final state = context.read<HelloBloc>().state;
+    final state = context.select((HelloBloc bloc) => bloc.state);
     final l10n = context.l10n;
 
     return Column(
