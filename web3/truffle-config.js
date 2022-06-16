@@ -6,7 +6,7 @@ module.exports = {
     network_id: "*",	 // Any network (default: none)
     },
   },
-    contracts_build_directory: "./src/artifacts/",
+    contracts_build_directory: "./artifacts/",
     
   // Configure your compilers
   compilers: {

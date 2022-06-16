@@ -36,6 +36,6 @@ flutter:
   uses-material-design: true
   generate: true
   assets:
-    - src/artifacts/HelloWeb3.json
+    - web3/artifacts/HelloWeb3.json
     - .env
 

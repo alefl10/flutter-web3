@@ -15,18 +15,22 @@ class WebThreeClient {
     required Web3Client web3client,
     required String privateKey,
     required String abi,
+    required String contractAddress,
   })  : _web3Client = web3client,
         _privateKey = privateKey,
-        _abi = abi;
+        _abi = abi,
+        _contractAddress = contractAddress;
 
   SmartContract get _contract => SmartContract.fromData(
         abiInfo: _abi,
         privateKey: _privateKey,
+        contractAddress: _contractAddress,
       );
 
   final Web3Client _web3Client;
   final String _privateKey;
   final String _abi;
+  final String _contractAddress;
 
   /// It gets the name from the contract.
   ///

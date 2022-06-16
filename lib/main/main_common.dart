@@ -12,7 +12,7 @@ import 'package:web_three_repository/web_three_repository.dart';
 Future<Widget> mainCommon() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  final abi = await rootBundle.loadString('src/artifacts/HelloWeb3.json');
+  final abi = await rootBundle.loadString('web3/artifacts/HelloWeb3.json');
   await dotenv.load();
 
   final web3Client = Web3Client(
@@ -23,9 +23,10 @@ Future<Widget> mainCommon() async {
   );
 
   final webThreeClient = WebThreeClient(
-    web3client: web3Client,
-    privateKey: dotenv.privateKey,
     abi: abi,
+    privateKey: dotenv.privateKey,
+    contractAddress: dotenv.contractAddress,
+    web3client: web3Client,
   );
 
   final webThreeRepository = WebThreeRepository(client: webThreeClient);

@@ -27,9 +27,10 @@ void main() {
     setUp(() {
       web3client = MockWeb3Client();
       webThreeClient = WebThreeClient(
-        web3client: web3client,
         abi: abi,
+        contractAddress: contractAddress,
         privateKey: privateKey,
+        web3client: web3client,
       );
     });
 
@@ -43,9 +44,10 @@ void main() {
     test('can be instantiated', () {
       expect(
         WebThreeClient(
-          web3client: web3client,
           abi: abi,
+          contractAddress: contractAddress,
           privateKey: privateKey,
+          web3client: web3client,
         ),
         isNotNull,
       );
@@ -68,11 +70,12 @@ void main() {
       test(
         'throws WebThreeClientException on SmartContractException',
         () async {
-          // Invalid privateKey and abi Strings
+          // Invalid data Strings
           final webThreeClient = WebThreeClient(
-            web3client: web3client,
-            privateKey: 'privateKey',
             abi: 'abi',
+            contractAddress: 'contractAddress',
+            privateKey: 'privateKey',
+            web3client: web3client,
           );
 
           expect(

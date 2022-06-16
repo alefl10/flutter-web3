@@ -30,22 +30,20 @@ class SmartContract extends DeployedContract {
   factory SmartContract.fromData({
     required String abiInfo,
     required String privateKey,
+    required String contractAddress,
   }) {
     try {
       // Reading the contract abi
       final abiDecoded = jsonDecode(abiInfo) as Map<String, dynamic>;
       final abi = jsonEncode(abiDecoded['abi']);
-      final contractAddress = EthereumAddress.fromHex(
-        // ignore: avoid_dynamic_calls
-        abiDecoded['networks']['5777']['address'] as String,
-      );
+      final address = EthereumAddress.fromHex(contractAddress);
 
       // Get credentials from our private key
       final credentials = EthPrivateKey.fromHex(privateKey);
 
       return SmartContract._(
         ContractAbi.fromJson(abi, 'HelloWeb3'),
-        contractAddress,
+        address,
         credentials,
       );
     } catch (e) {
