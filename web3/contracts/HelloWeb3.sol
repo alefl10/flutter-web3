@@ -6,10 +6,10 @@ contract HelloWeb3 {
     string public getName;
 
     constructor() {
-        getName = "Unknown";
+      getName = "Unknown";
     }
 
     function setName(string memory newName) public{
-		getName = newName;
+		  getName = newName;
     }
 }

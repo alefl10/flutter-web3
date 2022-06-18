@@ -7,13 +7,10 @@ environment:
   sdk: ">=2.17.0 <3.0.0"
 
 dependencies:
-  flutter:
-    sdk: flutter
   web_three_client:
     path: ../web_three_client
 
 dev_dependencies:
-  flutter_test:
-    sdk: flutter
   mocktail: ^0.3.0
-  very_good_analysis: ^3.0.0
+  test: ^1.19.2
+  very_good_analysis: ^3.0.1

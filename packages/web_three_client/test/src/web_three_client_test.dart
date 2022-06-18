@@ -1,6 +1,6 @@
 // ignore_for_file: prefer_const_constructors
-import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
+import 'package:test/test.dart';
 import 'package:web3dart/web3dart.dart';
 import 'package:web_three_client/web_three_client.dart';
 

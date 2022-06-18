@@ -1,4 +1,4 @@
-import 'package:flutter_test/flutter_test.dart';
+import 'package:test/test.dart';
 import 'package:web_three_repository/web_three_repository.dart';
 
 void main() {
