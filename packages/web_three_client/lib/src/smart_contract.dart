@@ -4,7 +4,7 @@ import 'package:web3dart/web3dart.dart';
 import 'package:web_three_client/web_three_client.dart';
 
 /// {@template smart_contract}
-/// Class extending around [DeployedContract].
+/// Class extending [DeployedContract].
 /// It simplifies the creation of a [Web3Client] contract
 /// and its [ContractFunction].
 ///
@@ -13,11 +13,7 @@ import 'package:web_three_client/web_three_client.dart';
 /// {@endtemplate}
 class SmartContract extends DeployedContract {
   /// {@macro smart_contract}
-  SmartContract._(
-    super.abi,
-    super.address,
-    this.credentials,
-  );
+  SmartContract._(super.abi, super.address, this.credentials);
 
   /// {@template set_name}
   /// Factory constructor to instantiate a [SmartContract].
