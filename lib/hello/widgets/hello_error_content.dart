@@ -8,7 +8,7 @@ class HelloErrorContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final state = context.select((HelloBloc bloc) => bloc.state);
+    final state = context.watch<HelloBloc>().state;
 
     return Center(
       child: state.isLoading
