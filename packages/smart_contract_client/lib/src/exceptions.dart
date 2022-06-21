@@ -1,18 +1,18 @@
-import 'package:web_three_client/web_three_client.dart';
+import 'package:smart_contract_client/smart_contract_client.dart';
 
-/// {@template web_three_client_exception}
-/// [Exception] thrown when any [WebThreeClient] methods fail.
+/// {@template smart_contract_client_exception}
+/// [Exception] thrown when any [SmartContractClient] methods fail.
 /// {@endtemplate}
-class WebThreeClientException implements Exception {
-  /// {@macro web_three_client_exception}
-  const WebThreeClientException(this.originalException);
+class SmartContractClientException implements Exception {
+  /// {@macro smart_contract_client_exception}
+  const SmartContractClientException(this.originalException);
 
   /// Original [Exception].
   final Object originalException;
 
   @override
   String toString() =>
-      'WebThreeClientException -> ${originalException.toString()}';
+      'SmartContractClientException -> ${originalException.toString()}';
 }
 
 /// {@template smart_contract_exception}

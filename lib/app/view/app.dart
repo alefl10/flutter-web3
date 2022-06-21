@@ -10,20 +10,20 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:hello_web3/hello/hello.dart';
 import 'package:hello_web3/l10n/l10n.dart';
-import 'package:web_three_repository/web_three_repository.dart';
+import 'package:smart_contract_repository/smart_contract_repository.dart';
 
 class App extends StatelessWidget {
   const App({
-    required WebThreeRepository webThreeRepository,
+    required SmartContractRepository smartContractRepository,
     super.key,
-  }) : _webThreeRepository = webThreeRepository;
+  }) : _smartContractRepository = smartContractRepository;
 
-  final WebThreeRepository _webThreeRepository;
+  final SmartContractRepository _smartContractRepository;
 
   @override
   Widget build(BuildContext context) {
     return MultiRepositoryProvider(
-      providers: [RepositoryProvider.value(value: _webThreeRepository)],
+      providers: [RepositoryProvider.value(value: _smartContractRepository)],
       child: const AppView(),
     );
   }

@@ -4,20 +4,21 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hello_web3/l10n/l10n.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:web_three_repository/web_three_repository.dart';
+import 'package:smart_contract_repository/smart_contract_repository.dart';
 
-class MockWebThreeRepository extends Mock implements WebThreeRepository {}
+class MockSmartContractRepository extends Mock
+    implements SmartContractRepository {}
 
 extension PumpApp on WidgetTester {
   Future<void> pumpApp(
     Widget widget, {
-    WebThreeRepository? webThreeRepository,
+    SmartContractRepository? smartContractRepository,
   }) {
     return pumpWidget(
       MultiRepositoryProvider(
         providers: [
           RepositoryProvider.value(
-            value: webThreeRepository ?? MockWebThreeRepository(),
+            value: smartContractRepository ?? MockSmartContractRepository(),
           ),
         ],
         child: MaterialApp(

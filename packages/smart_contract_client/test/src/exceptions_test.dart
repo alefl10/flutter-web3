@@ -1,12 +1,12 @@
+import 'package:smart_contract_client/smart_contract_client.dart';
 import 'package:test/test.dart';
-import 'package:web_three_client/web_three_client.dart';
 
 void main() {
-  group('WebThreeClientException', () {
+  group('SmartContractClientException', () {
     test('toString prints expected text', () {
       expect(
-        const WebThreeClientException('test').toString(),
-        'WebThreeClientException -> test',
+        const SmartContractClientException('test').toString(),
+        'SmartContractClientException -> test',
       );
     });
   });

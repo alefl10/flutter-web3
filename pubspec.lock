@@ -357,6 +357,20 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.99"
+  smart_contract_client:
+    dependency: "direct main"
+    description:
+      path: "packages/smart_contract_client"
+      relative: true
+    source: path
+    version: "1.0.0+1"
+  smart_contract_repository:
+    dependency: "direct main"
+    description:
+      path: "packages/smart_contract_repository"
+      relative: true
+    source: path
+    version: "1.0.0+1"
   source_map_stack_trace:
     dependency: transitive
     description:
@@ -497,20 +511,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.2.0"
-  web_three_client:
-    dependency: "direct main"
-    description:
-      path: "packages/web_three_client"
-      relative: true
-    source: path
-    version: "1.0.0+1"
-  web_three_repository:
-    dependency: "direct main"
-    description:
-      path: "packages/web_three_repository"
-      relative: true
-    source: path
-    version: "1.0.0+1"
   webkit_inspection_protocol:
     dependency: transitive
     description:

@@ -1,7 +1,7 @@
 import 'dart:convert';
 
+import 'package:smart_contract_client/smart_contract_client.dart';
 import 'package:web3dart/web3dart.dart';
-import 'package:web_three_client/web_three_client.dart';
 
 /// {@template smart_contract}
 /// Class extending [DeployedContract].

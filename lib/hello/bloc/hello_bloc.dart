@@ -3,24 +3,24 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
+import 'package:smart_contract_repository/smart_contract_repository.dart';
 import 'package:username_generator/username_generator.dart';
-import 'package:web_three_repository/web_three_repository.dart';
 
 part 'hello_event.dart';
 part 'hello_state.dart';
 
 class HelloBloc extends Bloc<HelloEvent, HelloState> {
   HelloBloc({
-    required WebThreeRepository webThreeRepository,
+    required SmartContractRepository smartContractRepository,
     required UsernameGenerator usernameGenerator,
-  })  : _webThreeRepository = webThreeRepository,
+  })  : _smartContractRepository = smartContractRepository,
         _usernameGenerator = usernameGenerator,
         super(const HelloState()) {
     on<HelloNameRequested>(_nameRequested);
     on<HelloRandomNameSet>(_randomNameSet);
   }
 
-  final WebThreeRepository _webThreeRepository;
+  final SmartContractRepository _smartContractRepository;
   final UsernameGenerator _usernameGenerator;
 
   FutureOr<void> _nameRequested(
@@ -30,7 +30,7 @@ class HelloBloc extends Bloc<HelloEvent, HelloState> {
     emit(state.copyWith(status: HelloAsyncStatus.loading));
 
     try {
-      final name = await _webThreeRepository.getName();
+      final name = await _smartContractRepository.getName();
       emit(state.copyWith(status: HelloAsyncStatus.success, name: name));
     } catch (e, s) {
       addError(e, s);
@@ -45,7 +45,7 @@ class HelloBloc extends Bloc<HelloEvent, HelloState> {
     emit(state.copyWith(status: HelloAsyncStatus.loading));
     try {
       final name = _usernameGenerator.generateRandom();
-      final txHash = await _webThreeRepository.setName(name: name);
+      final txHash = await _smartContractRepository.setName(name: name);
       emit(
         state.copyWith(
           name: name,

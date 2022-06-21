@@ -2,8 +2,8 @@ import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hello_web3/hello/hello.dart';
 import 'package:mocktail/mocktail.dart';
+import 'package:smart_contract_repository/smart_contract_repository.dart';
 import 'package:username_generator/username_generator.dart';
-import 'package:web_three_repository/web_three_repository.dart';
 
 import '../../helpers/helpers.dart';
 
@@ -12,23 +12,23 @@ class MockUsernameGenerator extends Mock implements UsernameGenerator {}
 void main() {
   group('HelloBloc', () {
     const name = 'alefldev';
-    late WebThreeRepository webThreeRepository;
+    late SmartContractRepository smartContractRepository;
     late UsernameGenerator usernameGenerator;
 
     setUp(() {
-      webThreeRepository = MockWebThreeRepository();
+      smartContractRepository = MockSmartContractRepository();
       usernameGenerator = MockUsernameGenerator();
     });
 
     HelloBloc buildBloc() => HelloBloc(
-          webThreeRepository: webThreeRepository,
+          smartContractRepository: smartContractRepository,
           usernameGenerator: usernameGenerator,
         );
 
     test('emits correct initial state ', () {
       expect(
         HelloBloc(
-          webThreeRepository: webThreeRepository,
+          smartContractRepository: smartContractRepository,
           usernameGenerator: usernameGenerator,
         ).state,
         const HelloState(),
@@ -39,7 +39,7 @@ void main() {
       blocTest<HelloBloc, HelloState>(
         'emits successful state with correct name on .getName',
         setUp: () {
-          when(() => webThreeRepository.getName()).thenAnswer(
+          when(() => smartContractRepository.getName()).thenAnswer(
             (_) async => name,
           );
         },
@@ -54,8 +54,8 @@ void main() {
       blocTest<HelloBloc, HelloState>(
         'emits error state on .getName exception',
         setUp: () {
-          when(() => webThreeRepository.getName()).thenThrow(
-            const WebThreeRepositoryException(''),
+          when(() => smartContractRepository.getName()).thenThrow(
+            const SmartContractRepositoryException(''),
           );
         },
         build: buildBloc,
@@ -74,7 +74,7 @@ void main() {
         'emits successful state with correct name and transaction on .setName',
         setUp: () {
           when(() => usernameGenerator.generateRandom()).thenReturn(name);
-          when(() => webThreeRepository.setName(name: any(named: 'name')))
+          when(() => smartContractRepository.setName(name: any(named: 'name')))
               .thenAnswer(
             (_) async => transaction,
           );
@@ -94,8 +94,8 @@ void main() {
       blocTest<HelloBloc, HelloState>(
         'emits error state on .setName exception',
         setUp: () {
-          when(() => webThreeRepository.setName(name: any(named: 'name')))
-              .thenThrow(const WebThreeRepositoryException(''));
+          when(() => smartContractRepository.setName(name: any(named: 'name')))
+              .thenThrow(const SmartContractRepositoryException(''));
         },
         build: buildBloc,
         act: (bloc) => bloc.add(HelloRandomNameSet()),

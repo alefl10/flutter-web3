@@ -4,7 +4,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:hello_web3/app/app.dart';
 import 'package:hello_web3/hello/hello.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:web_three_repository/web_three_repository.dart';
+import 'package:smart_contract_repository/smart_contract_repository.dart';
 
 import '../helpers/helpers.dart';
 
@@ -13,14 +13,15 @@ class MockHelloBloc extends MockBloc<HelloEvent, HelloState>
 
 void main() {
   group('App', () {
-    late WebThreeRepository webThreeRepository;
+    late SmartContractRepository smartContractRepository;
 
     setUp(() {
-      webThreeRepository = MockWebThreeRepository();
+      smartContractRepository = MockSmartContractRepository();
     });
 
     testWidgets('renders AppView', (tester) async {
-      await tester.pumpWidget(App(webThreeRepository: webThreeRepository));
+      await tester
+          .pumpWidget(App(smartContractRepository: smartContractRepository));
       expect(find.byType(AppView), findsOneWidget);
     });
   });

@@ -1,11 +1,11 @@
 // ignore_for_file: prefer_const_constructors
 import 'package:mocktail/mocktail.dart';
+import 'package:smart_contract_client/smart_contract_client.dart';
 import 'package:test/test.dart';
 import 'package:web3dart/web3dart.dart';
-import 'package:web_three_client/web_three_client.dart';
 
 import '../helper/helper.dart';
-// import 'package:web_three_client/web_three_client.dart';
+// import 'package:smart_contract_client/smart_contract_client.dart';
 
 class MockWeb3Client extends Mock implements Web3Client {}
 
@@ -18,15 +18,15 @@ class FakeCredentials extends Fake implements Credentials {}
 class FakeTransaction extends Fake implements Transaction {}
 
 void main() {
-  group('WebThreeClient', () {
+  group('SmartContractClient', () {
     late Web3Client web3client;
-    late WebThreeClient webThreeClient;
+    late SmartContractClient smartContractClient;
     const abi = abiData;
     const privateKey = privateKeyData;
 
     setUp(() {
       web3client = MockWeb3Client();
-      webThreeClient = WebThreeClient(
+      smartContractClient = SmartContractClient(
         abi: abi,
         contractAddress: contractAddress,
         privateKey: privateKey,
@@ -43,7 +43,7 @@ void main() {
 
     test('can be instantiated', () {
       expect(
-        WebThreeClient(
+        SmartContractClient(
           abi: abi,
           contractAddress: contractAddress,
           privateKey: privateKey,
@@ -64,14 +64,14 @@ void main() {
           ),
         ).thenAnswer((_) async => <dynamic>[name]);
 
-        expect(webThreeClient.getName(), completion(name));
+        expect(smartContractClient.getName(), completion(name));
       });
 
       test(
-        'throws WebThreeClientException on SmartContractException',
+        'throws SmartContractClientException on SmartContractException',
         () async {
           // Invalid data Strings
-          final webThreeClient = WebThreeClient(
+          final smartContractClient = SmartContractClient(
             abi: 'abi',
             contractAddress: 'contractAddress',
             privateKey: 'privateKey',
@@ -79,13 +79,13 @@ void main() {
           );
 
           expect(
-            webThreeClient.getName(),
-            throwsA(isA<WebThreeClientException>()),
+            smartContractClient.getName(),
+            throwsA(isA<SmartContractClientException>()),
           );
         },
       );
 
-      test('throws WebThreeClientException on any Exception', () async {
+      test('throws SmartContractClientException on any Exception', () async {
         when(
           () => web3client.call(
             contract: any(named: 'contract'),
@@ -95,8 +95,8 @@ void main() {
         ).thenThrow(Exception());
 
         expect(
-          webThreeClient.getName(),
-          throwsA(isA<WebThreeClientException>()),
+          smartContractClient.getName(),
+          throwsA(isA<SmartContractClientException>()),
         );
       });
     });
@@ -108,10 +108,13 @@ void main() {
           () => web3client.sendTransaction(any(), any()),
         ).thenAnswer((_) => Future.value(transactionHash));
 
-        expect(webThreeClient.setName(name: ''), completion(transactionHash));
+        expect(
+          smartContractClient.setName(name: ''),
+          completion(transactionHash),
+        );
       });
 
-      test('throws WebThreeClientException on any Exception', () async {
+      test('throws SmartContractClientException on any Exception', () async {
         when(
           () => web3client.call(
             contract: any(named: 'contract'),
@@ -121,8 +124,8 @@ void main() {
         ).thenThrow(Exception());
 
         expect(
-          webThreeClient.setName(name: ''),
-          throwsA(isA<WebThreeClientException>()),
+          smartContractClient.setName(name: ''),
+          throwsA(isA<SmartContractClientException>()),
         );
       });
     });

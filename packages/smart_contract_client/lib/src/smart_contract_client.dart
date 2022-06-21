@@ -1,17 +1,17 @@
+import 'package:smart_contract_client/smart_contract_client.dart';
 import 'package:web3dart/web3dart.dart';
-import 'package:web_three_client/web_three_client.dart';
 
-/// {@template web_three_client}
-/// Class wrapping around [WebThreeClient].
+/// {@template smart_contract_client}
+/// Class wrapping around [SmartContractClient].
 /// It abstracts away the creation of [DeployedContract] and [ContractFunction].
 ///
 /// It exposes methods to interact and communicate with
 /// the deployed [SmartContract].
 ///
 /// {@endtemplate}
-class WebThreeClient {
-  /// {@macro web_three_client}
-  WebThreeClient({
+class SmartContractClient {
+  /// {@macro smart_contract_client}
+  SmartContractClient({
     required Web3Client web3client,
     required String privateKey,
     required String abi,
@@ -34,7 +34,7 @@ class WebThreeClient {
 
   /// It gets the name from the contract.
   ///
-  /// It throws a [WebThreeClientException] on any given [Exception].
+  /// It throws a [SmartContractClientException] on any given [Exception].
   Future<String> getName() async {
     // Getting the current name declared in the smart contract.
     try {
@@ -46,13 +46,13 @@ class WebThreeClient {
 
       return name[0] as String;
     } catch (e) {
-      throw WebThreeClientException(e);
+      throw SmartContractClientException(e);
     }
   }
 
   /// Sets the name of the contract to the passed [name] value.
   ///
-  /// It throws a [WebThreeClientException] on any given [Exception].
+  /// It throws a [SmartContractClientException] on any given [Exception].
   Future<String> setName({required String name}) async {
     try {
       // Setting the name to name(name defined by user)
@@ -66,7 +66,7 @@ class WebThreeClient {
       );
       return transactionHash;
     } catch (e) {
-      throw WebThreeClientException(e);
+      throw SmartContractClientException(e);
     }
   }
 }

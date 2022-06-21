@@ -1,9 +1,9 @@
-# web_three_repository
+# smart_contract_client
 
 [![style: very good analysis][very_good_analysis_badge]][very_good_analysis_link]
 [![License: MIT][license_badge]][license_link]
 
-Repository to interact with web_three_client
+A Very Good Project created by Very Good CLI.
 
 [license_badge]: https://img.shields.io/badge/license-MIT-blue.svg
 [license_link]: https://opensource.org/licenses/MIT
